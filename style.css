@@ -1,17 +1,127 @@
 body {
-    background-color: #1a1a1a; /* Un gris oscuro elegante */
-    color: #00ff88;           /* Verde neón tipo terminal/trading */
-    font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;      /* Centra todo horizontalmente */
-    justify-content: center;  /* Centra todo verticalmente */
-    height: 100vh;            /* Usa todo el alto de la pantalla */
-    margin: 0;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #0f172a;
+  color: white;
+}
+
+section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.hero {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 h1 {
-    font-size: 3rem;
-    text-transform: uppercase;
-    border-bottom: 2px solid #00ff88;
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+p {
+  max-width: 600px;
+  margin: 0 auto 20px;
+  line-height: 1.6;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #38bdf8;
+  color: black;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-top: 20px;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #0ea5e9;
+}html {
+  scroll-behavior: smooth;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #0f172a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  z-index: 1000;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+  color: #38bdf8;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #38bdf8;
+}
+
+/* Ajuste para que el contenido no quede debajo del navbar */
+body {
+  margin: 0;
+  padding-top: 90px;
+}
+/* Esto separa el Logo de los Enlaces */
+nav {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 20px 5%;
+}
+
+/* Esto separa Home, About y Contact entre sí */
+.nav-links {
+    display: flex;       /* Los pone en fila */
+    gap: 30px;           /* Crea el espacio entre ellos */
+    list-style: none;    /* Quita los puntos */
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none; /* Quita el subrayado */
+    color: white;
+    font-size: 1.1rem;
 }
