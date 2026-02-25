@@ -124,4 +124,13 @@ nav {
     text-decoration: none; /* Quita el subrayado */
     color: white;
     font-size: 1.1rem;
+}.profile-img {
+    width: 150px;           /* Tamaño de la foto */
+    height: 150px;          /* Debe ser igual al ancho */
+    object-fit: cover;      /* Evita que la foto se estire feo */
+    border-radius: 50%;     /* ¡Esto la hace circular! */
+    border: 3px solid #00ff88; /* El borde verde neón que ya usaste */
+    display: block;         /* Permite centrarla */
+    margin: 20px auto;      /* La centra horizontalmente */
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.2); /* Un pequeño brillo */
 }
