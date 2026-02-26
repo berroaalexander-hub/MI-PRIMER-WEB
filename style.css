@@ -133,4 +133,21 @@ nav {
     display: block;         /* Permite centrarla */
     margin: 20px auto;      /* La centra horizontalmente */
     box-shadow: 0 0 20px rgba(0, 255, 136, 0.2); /* Un pequeño brillo */
+}/* Esto hace que el cambio de color sea suave, no de golpe */
+.nav-links a {
+    transition: all 0.3s ease;
+}
+
+/* Lo que pasa cuando el mouse está encima (Hover) */
+.nav-links a:hover {
+    color: #00ff88;      /* Tu verde neón */
+    text-shadow: 0 0 10px #00ff88; /* Un brillo suave */
+    transform: translateY(-3px);   /* El enlace sube un poquito */
+}
+
+/* Efecto para tu foto de perfil */
+.profile-img:hover {
+    transform: scale(1.05); /* La foto se agranda un 5% */
+    transition: transform 0.3s ease;
+    cursor: pointer;
 }
