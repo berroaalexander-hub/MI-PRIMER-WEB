@@ -159,4 +159,21 @@ nav {
 p {
     color: #8892b0; /* Un gris azulado para que el nombre resalte más */
     font-size: 1.2rem;
+}.social-icons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.social-icons a {
+    font-size: 2rem;
+    color: #8892b0;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #00ff88; /* Tu verde neón */
+    transform: translateY(-5px) scale(1.2);
+    text-shadow: 0 0 15px #00ff88;
 }
