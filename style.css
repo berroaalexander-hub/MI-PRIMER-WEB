@@ -176,4 +176,47 @@ p {
     color: #00ff88; /* Tu verde neón */
     transform: translateY(-5px) scale(1.2);
     text-shadow: 0 0 15px #00ff88;
+}.about-section {
+    padding: 80px 10%;
+    background-color: rgba(255, 255, 255, 0.02); /* Un fondo sutilmente distinto */
+}
+
+.about-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 50px;
+}
+
+.about-text {
+    flex: 2; /* Toma más espacio para el texto */
+}
+
+.about-text h2 {
+    color: #00ff88;
+    margin-bottom: 20px;
+}
+
+.about-skills {
+    flex: 1; /* Columna más estrecha para las habilidades */
+    background: rgba(0, 255, 136, 0.05);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.about-skills ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about-skills li {
+    margin: 15px 0;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.about-skills i {
+    color: #00ff88;
+    margin-right: 10px;
 }
