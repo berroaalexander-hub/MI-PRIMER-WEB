@@ -219,4 +219,14 @@ p {
 .about-skills i {
     color: #00ff88;
     margin-right: 10px;
+}/* Esto se activa solo en pantallas pequeñas (celulares) */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column; /* Cambia de horizontal a vertical */
+        gap: 30px;
+    }
+
+    .about-text, .about-skills {
+        width: 100%; /* Ocupan todo el ancho del celular */
+    }
 }
