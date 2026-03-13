@@ -121,4 +121,28 @@ h1 {
         flex-direction: column;
         text-align: center;
     }
+}.typing-text {
+    font-family: 'Courier New', Courier, monospace; /* Fuente tipo código */
+    color: #00ff88;
+    border-right: 3px solid #00ff88; /* El cursor que parpadea */
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 20px auto;
+    letter-spacing: 2px;
+    width: 0; /* Empezamos desde cero */
+    animation: 
+        typing 3.5s steps(30, end) forwards,
+        blink-caret 0.75s step-end infinite;
+}
+
+/* Animación de escribir */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* Animación del cursor parpadeando */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #00ff88 }
 }
