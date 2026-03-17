@@ -51,12 +51,48 @@
             </div>
         </div>
     </section>
+<section id="projects" class="projects-section">
+    <h2 class="section-title">Mis Proyectos</h2>
+    <div class="projects-grid">
+        <div class="project-card">
+            <div class="project-icon"><i class="fas fa-chart-bar"></i></div>
+            <h3>Análisis de Mercados</h3>
+            <p>Estrategias intradía en Micro E-mini S&P 500 (MES) enfocadas en volumen y acción del precio.</p>
+        </div>
 
+        <div class="project-card">
+            <div class="project-icon"><i class="fas fa-laptop-code"></i></div>
+            <h3>Mi Primera Web</h3>
+            <p>Desarrollo de este portafolio personal utilizando HTML5, CSS3 y JavaScript con diseño responsivo.</p>
+        </div>
+
+        <div class="project-card">
+            <div class="project-icon"><i class="fas fa-bullhorn"></i></div>
+            <h3>Affiliate Marketing</h3>
+            <p>Gestión y optimización de campañas de marketing digital para productos especializados.</p>
+        </div>
+    </div>
+</section>
     <section id="contact" style="padding: 50px;">
         <h2 style="color: #00ff88;">Contacto</h2>
         <p>¡Hablemos de trading o programación!</p>
         <a href="mailto:tuemail@ejemplo.com" style="color: white; text-decoration: none; border: 1px solid #00ff88; padding: 10px 20px; border-radius: 5px;">Enviar Email</a>
     </section>
+<script>
+    const text = "Future Full Stack Developer";
+    const typingText = document.getElementById("typing-text");
+    let i = 0;
 
+    function typeWriter() {
+        if (i < text.length) {
+            typingText.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, 100); // Velocidad en milisegundos
+        }
+    }
+
+    // Inicia el efecto cuando carga la página
+    window.onload = typeWriter;
+</script>
 </body>
 </html>
