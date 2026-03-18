@@ -253,4 +253,14 @@ h1 {
 }
 .calc-btn:hover { background: #00ff88; color: #0a192f; }
 .calc-result { margin-top: 20px; color: #fff; font-family: monospace; }
-.highlight-val { color: #00ff88; font-size: 1.5rem; display: block; }
+.highlight-val { color: #00ff88; font-size: 1.5rem; display: block; }nav a {
+    text-decoration: none;
+    color: #fff;
+    margin: 0 15px; /* Esto les da 15px de espacio a los lados */
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #00ff88; /* Brillo verde al pasar el mouse */
+}
