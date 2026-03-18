@@ -72,6 +72,27 @@
             <p>Gestión y optimización de campañas de marketing digital para productos especializados.</p>
         </div>
     </div>
+</section><section id="trading-tool" class="tool-section">
+    <h2 class="section-title">Calculadora de Riesgo (MES)</h2>
+    <div class="tool-container">
+        <div class="input-group">
+            <label>Capital de la Cuenta ($)</label>
+            <input type="number" id="capital" placeholder="Ej: 5000">
+        </div>
+        <div class="input-group">
+            <label>% de Riesgo por Trade</label>
+            <input type="number" id="risk-percent" placeholder="Ej: 1">
+        </div>
+        <div class="input-group">
+            <label>Stop Loss (en Ticks)</label>
+            <input type="number" id="stop-ticks" placeholder="Ej: 40">
+        </div>
+        <button onclick="calculateRisk()" class="calc-btn">Calcular Contratos</button>
+        
+        <div id="result" class="calc-result">
+            Esperando datos...
+        </div>
+    </div>
 </section>
     <section id="contact" style="padding: 50px;">
         <h2 style="color: #00ff88;">Contacto</h2>
@@ -92,7 +113,28 @@
     }
 
     // Inicia el efecto cuando carga la página
-    window.onload = typeWriter;
+    window.onload = typeWriter;function calculateRisk() {
+    const capital = document.getElementById('capital').value;
+    const riskPercent = document.getElementById('risk-percent').value;
+    const stopTicks = document.getElementById('stop-ticks').value;
+    const resultDiv = document.getElementById('result');
+
+    if (capital && riskPercent && stopTicks) {
+        // Riesgo en dólares
+        const riskAmount = capital * (riskPercent / 100);
+        // Valor del tick en MES = $1.25
+        const costPerTrade = stopTicks * 1.25;
+        // Cantidad de contratos (redondeado hacia abajo)
+        const contracts = Math.floor(riskAmount / costPerTrade);
+
+        resultDiv.innerHTML = `
+            <p>Riesgo máximo: <strong>$${riskAmount.toFixed(2)}</strong></p>
+            <p>Contratos recomendados: <span class="highlight-val">${contracts} MES</span></p>
+        `;
+    } else {
+        resultDiv.innerHTML = "Por favor, completa todos los campos.";
+    }
+}
 </script><footer class="main-footer">
     <div class="footer-content">
         <p>&copy; 2026 <span class="highlight">Alexander Berroa</span></p>

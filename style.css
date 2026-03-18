@@ -236,4 +236,21 @@ h1 {
 }.footer-content p:first-child {
     font-size: 1.1rem;
     letter-spacing: 1px;
+}.tool-section { padding: 80px 10%; background: rgba(0, 255, 136, 0.02); }
+.tool-container { 
+    max-width: 400px; margin: 0 auto; background: #112240; 
+    padding: 30px; border-radius: 15px; border: 1px solid #00ff88;
 }
+.input-group { margin-bottom: 20px; text-align: left; }
+.input-group label { display: block; color: #8892b0; margin-bottom: 5px; }
+.input-group input { 
+    width: 100%; padding: 10px; background: #0a192f; border: 1px solid #233554;
+    color: #fff; border-radius: 5px; outline: none;
+}
+.calc-btn { 
+    width: 100%; padding: 12px; background: transparent; border: 2px solid #00ff88;
+    color: #00ff88; font-weight: bold; cursor: pointer; transition: 0.3s;
+}
+.calc-btn:hover { background: #00ff88; color: #0a192f; }
+.calc-result { margin-top: 20px; color: #fff; font-family: monospace; }
+.highlight-val { color: #00ff88; font-size: 1.5rem; display: block; }
