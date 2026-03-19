@@ -263,4 +263,25 @@ h1 {
 
 nav a:hover {
     color: #00ff88; /* Brillo verde al pasar el mouse */
+}/* Ajustes para Celulares */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Pone los enlaces uno debajo del otro */
+        padding: 15px;
+        height: auto;
+    }
+
+    nav a {
+        margin: 8px 0; /* Espacio arriba y abajo de cada botón */
+        font-size: 0.9rem;
+        display: block;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem; /* Achicamos un poco el título para que no se corte */
+    }
+
+    .tool-container {
+        width: 90%; /* La calculadora ocupará casi todo el ancho en el móvil */
+    }
 }
