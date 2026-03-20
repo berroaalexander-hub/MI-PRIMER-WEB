@@ -93,7 +93,36 @@
             Esperando datos...
         </div>
     </div>
-</section>
+</section>let totalPnL = 0;
+
+function addTrade() {
+    const asset = document.getElementById('trade-asset').value;
+    const result = parseFloat(document.getElementById('trade-result').value);
+    const tableBody = document.getElementById('trade-body');
+
+    if (asset && !isNaN(result)) {
+        // Crear nueva fila
+        const row = tableBody.insertRow();
+        const status = result >= 0 ? '🟢 Win' : '🔴 Loss';
+        const statusClass = result >= 0 ? 'win-text' : 'loss-text';
+
+        row.innerHTML = `
+            <td>${asset}</td>
+            <td class="${statusClass}">$${result.toFixed(2)}</td>
+            <td>${status}</td>
+        `;
+
+        // Actualizar Total
+        totalPnL += result;
+        const totalDisplay = document.getElementById('total-pnl');
+        totalDisplay.innerText = `$${totalPnL.toFixed(2)}`;
+        totalDisplay.className = totalPnL >= 0 ? 'win-text' : 'loss-text';
+
+        // Limpiar campos
+        document.getElementById('trade-asset').value = '';
+        document.getElementById('trade-result').value = '';
+    }
+}
     <section id="contact" style="padding: 50px;">
         <h2 style="color: #00ff88;">Contacto</h2>
         <p>¡Hablemos de trading o programación!</p>
@@ -133,6 +162,35 @@
         `;
     } else {
         resultDiv.innerHTML = "Por favor, completa todos los campos.";
+    }
+}let totalPnL = 0;
+
+function addTrade() {
+    const asset = document.getElementById('trade-asset').value;
+    const result = parseFloat(document.getElementById('trade-result').value);
+    const tableBody = document.getElementById('trade-body');
+
+    if (asset && !isNaN(result)) {
+        // Crear nueva fila
+        const row = tableBody.insertRow();
+        const status = result >= 0 ? '🟢 Win' : '🔴 Loss';
+        const statusClass = result >= 0 ? 'win-text' : 'loss-text';
+
+        row.innerHTML = `
+            <td>${asset}</td>
+            <td class="${statusClass}">$${result.toFixed(2)}</td>
+            <td>${status}</td>
+        `;
+
+        // Actualizar Total
+        totalPnL += result;
+        const totalDisplay = document.getElementById('total-pnl');
+        totalDisplay.innerText = `$${totalPnL.toFixed(2)}`;
+        totalDisplay.className = totalPnL >= 0 ? 'win-text' : 'loss-text';
+
+        // Limpiar campos
+        document.getElementById('trade-asset').value = '';
+        document.getElementById('trade-result').value = '';
     }
 }
 </script><footer class="main-footer">
