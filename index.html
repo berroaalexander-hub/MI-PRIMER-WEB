@@ -129,70 +129,59 @@ function addTrade() {
         <a href="mailto:tuemail@ejemplo.com" style="color: white; text-decoration: none; border: 1px solid #00ff88; padding: 10px 20px; border-radius: 5px;">Enviar Email</a>
     </section>
 <script>
-    const text = "Future Full Stack Developer";
-    const typingText = document.getElementById("typing-text");
-    let i = 0;
+    // 1. Efecto de escritura (lo que ya tenías)
+    window.onload = typeWriter; 
 
-    function typeWriter() {
-        if (i < text.length) {
-            typingText.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(typeWriter, 100); // Velocidad en milisegundos
+    // 2. Variable para la bitácora (fuera de las funciones)
+    let totalPnL = 0;
+
+    // 3. Función de la Calculadora de Riesgo
+    function calculateRisk() {
+        const capital = document.getElementById('capital').value;
+        const riskPercent = document.getElementById('risk-percent').value;
+        const stopTicks = document.getElementById('stop-ticks').value;
+        const resultDiv = document.getElementById('result');
+
+        if (capital && riskPercent && stopTicks) {
+            const riskAmount = capital * (riskPercent / 100);
+            const costPerTrade = stopTicks * 1.25;
+            const contracts = Math.floor(riskAmount / costPerTrade);
+
+            resultDiv.innerHTML = `
+                <p>Riesgo máximo: <strong>$${riskAmount.toFixed(2)}</strong></p>
+                <p>Contratos recomendados: <span class="highlight-val">${contracts} MES</span></p>
+            `;
+        } else {
+            resultDiv.innerHTML = "Por favor, completa todos los campos.";
         }
     }
 
-    // Inicia el efecto cuando carga la página
-    window.onload = typeWriter;function calculateRisk() {
-    const capital = document.getElementById('capital').value;
-    const riskPercent = document.getElementById('risk-percent').value;
-    const stopTicks = document.getElementById('stop-ticks').value;
-    const resultDiv = document.getElementById('result');
+    // 4. Función de la Bitácora de Trades
+    function addTrade() {
+        const asset = document.getElementById('trade-asset').value;
+        const result = parseFloat(document.getElementById('trade-result').value);
+        const tableBody = document.getElementById('trade-body');
 
-    if (capital && riskPercent && stopTicks) {
-        // Riesgo en dólares
-        const riskAmount = capital * (riskPercent / 100);
-        // Valor del tick en MES = $1.25
-        const costPerTrade = stopTicks * 1.25;
-        // Cantidad de contratos (redondeado hacia abajo)
-        const contracts = Math.floor(riskAmount / costPerTrade);
+        if (asset && !isNaN(result)) {
+            const row = tableBody.insertRow();
+            const status = result >= 0 ? '🟢 Win' : '🔴 Loss';
+            const statusClass = result >= 0 ? 'win-text' : 'loss-text';
 
-        resultDiv.innerHTML = `
-            <p>Riesgo máximo: <strong>$${riskAmount.toFixed(2)}</strong></p>
-            <p>Contratos recomendados: <span class="highlight-val">${contracts} MES</span></p>
-        `;
-    } else {
-        resultDiv.innerHTML = "Por favor, completa todos los campos.";
+            row.innerHTML = `
+                <td>${asset}</td>
+                <td class="${statusClass}">$${result.toFixed(2)}</td>
+                <td>${status}</td>
+            `;
+
+            totalPnL += result;
+            const totalDisplay = document.getElementById('total-pnl');
+            totalDisplay.innerText = `$${totalPnL.toFixed(2)}`;
+            totalDisplay.className = totalPnL >= 0 ? 'win-text' : 'loss-text';
+
+            document.getElementById('trade-asset').value = '';
+            document.getElementById('trade-result').value = '';
+        }
     }
-}let totalPnL = 0;
-
-function addTrade() {
-    const asset = document.getElementById('trade-asset').value;
-    const result = parseFloat(document.getElementById('trade-result').value);
-    const tableBody = document.getElementById('trade-body');
-
-    if (asset && !isNaN(result)) {
-        // Crear nueva fila
-        const row = tableBody.insertRow();
-        const status = result >= 0 ? '🟢 Win' : '🔴 Loss';
-        const statusClass = result >= 0 ? 'win-text' : 'loss-text';
-
-        row.innerHTML = `
-            <td>${asset}</td>
-            <td class="${statusClass}">$${result.toFixed(2)}</td>
-            <td>${status}</td>
-        `;
-
-        // Actualizar Total
-        totalPnL += result;
-        const totalDisplay = document.getElementById('total-pnl');
-        totalDisplay.innerText = `$${totalPnL.toFixed(2)}`;
-        totalDisplay.className = totalPnL >= 0 ? 'win-text' : 'loss-text';
-
-        // Limpiar campos
-        document.getElementById('trade-asset').value = '';
-        document.getElementById('trade-result').value = '';
-    }
-}
 </script><footer class="main-footer">
     <div class="footer-content">
         <p>&copy; 2026 <span class="highlight">Alexander Berroa</span></p>
