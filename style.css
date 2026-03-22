@@ -296,4 +296,31 @@ nav a:hover {
 
 .win-text { color: #00ff88; font-weight: bold; }
 .loss-text { color: #ff4c4c; font-weight: bold; }
-.total-container { margin-top: 20px; font-size: 1.2rem; border-top: 2px solid #233554; padding-top: 15px; }
+.total-container { margin-top: 20px; font-size: 1.2rem; border-top: 2px solid #233554; padding-top: 15px; }.trading-container {
+    background-color: #1e1e1e;
+    color: #00ff00; /* Color verde terminal */
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    font-family: monospace;
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+input {
+    width: 100%;
+    background: #333;
+    border: 1px solid #555;
+    color: white;
+    padding: 5px;
+}
+
+button {
+    background-color: #00ff00;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+}
