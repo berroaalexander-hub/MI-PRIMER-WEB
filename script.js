@@ -65,4 +65,46 @@ function addTrade() {
         document.getElementById('trade-asset').value = '';
         document.getElementById('trade-result').value = '';
     }
+}// VARIABLES PARA EL MONITOR
+let lastPrice = 5500.00; // Precio inicial simulado
+let currentPrice = 5500.00;
+
+// 1. FUNCIÓN QUE SIMULA EL MOVIMIENTO DEL MERCADO
+function updateMarket() {
+    // Genera un movimiento aleatorio (como en la vida real)
+    const movement = (Math.random() - 0.5) * 4; 
+    lastPrice = currentPrice;
+    currentPrice += movement;
+
+    // Mostrar el precio en pantalla
+    const priceDiv = document.getElementById('live-price');
+    priceDiv.innerText = currentPrice.toFixed(2);
+
+    // Cambiar color según si sube o baja
+    priceDiv.className = currentPrice >= lastPrice ? 'price-up' : 'price-down';
+
+    checkVolatility(movement);
 }
+
+// 2. LA LÓGICA DE LA ALERTA
+function checkVolatility(change) {
+    const alertBox = document.getElementById('volatility-alert');
+    
+    // Si el movimiento es brusco (más de 1.5 puntos en un segundo)
+    if (Math.abs(change) > 1.5) {
+        alertBox.innerText = "⚠️ ALERTA: VOLATILIDAD ALTA";
+        alertBox.style.backgroundColor = "#ff4c4c"; // Rojo
+        alertBox.style.color = "white";
+        
+        // Efecto de parpadeo (opcional)
+        alertBox.classList.add('blink');
+    } else {
+        alertBox.innerText = "Mercado Estable";
+        alertBox.style.backgroundColor = "transparent";
+        alertBox.style.color = "#00ff88";
+        alertBox.classList.remove('blink');
+    }
+}
+
+// 3. ARRANCAR EL MONITOR (Cada 1 segundo)
+setInterval(updateMarket, 1000);

@@ -323,4 +323,34 @@ button {
     font-weight: bold;
     cursor: pointer;
     width: 100%;
+}.monitor-card {
+    background: #0a192f;
+    border: 2px solid #00ff88;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.price-display {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.price-up { color: #00ff88; } /* Verde */
+.price-down { color: #ff4c4c; } /* Rojo */
+
+.alert-box {
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.blink {
+    animation: blinker 0.5s linear infinite;
+}
+
+@keyframes blinker {
+    50% { opacity: 0; }
 }
