@@ -82,6 +82,16 @@
     <div id="live-price" style="font-size: 3rem; font-weight: bold; margin: 10px 0; color: #00ff88;">5500.00</div>
     <div id="volatility-alert" style="padding: 10px; border-radius: 5px; font-weight: bold; color: #00ff88;">Mercado Estable</div>
 </div>
+<div id="price-memory" style="display: flex; justify-content: space-around; background: #112240; padding: 15px; border-radius: 8px; border: 1px dashed #00ff88; margin-bottom: 20px;">
+    <div style="text-align: center;">
+        <span style="color: #8892b0; font-size: 0.8rem; display: block;">MÁXIMO DEL DÍA (RESISTENCIA)</span>
+        <strong id="day-high" style="color: #00ff88; font-size: 1.5rem;">5500.00</strong>
+    </div>
+    <div style="text-align: center;">
+        <span style="color: #8892b0; font-size: 0.8rem; display: block;">MÍNIMO DEL DÍA (SOPORTE)</span>
+        <strong id="day-low" style="color: #ff4c4c; font-size: 1.5rem;">5500.00</strong>
+    </div>
+</div>
     <div class="tool-container">
         <div class="input-group">
             <label>Capital de la Cuenta ($)</label>
@@ -108,49 +118,9 @@
         <p>¡Hablemos de trading o programación!</p>
         <a href="mailto:tuemail@ejemplo.com" style="color: white; text-decoration: none; border: 1px solid #00ff88; padding: 10px 20px; border-radius: 5px;">Enviar Email</a>
     </section>
-    // Nueva lógica con sonido dentro del setInterval
-    if (movement > 1.5) { // Solo si el precio sube fuerte
-        alertBox.innerText = "💰 ¡OPORTUNIDAD DE COMPRA!";
-        alertBox.style.backgroundColor = "#00ff88"; // Verde brillante
-        alertBox.style.color = "#0a192f";
-        
-        // REPRODUCIR SONIDO
-        const sound = document.getElementById('clink-sound');
-        if(sound) sound.play(); 
+   
+    
 
-    } else if (movement < -1.5) { // Si el precio cae fuerte
-        alertBox.innerText = "⚠️ VOLATILIDAD BAJISTA";
-        alertBox.style.backgroundColor = "#ff4c4c"; // Rojo
-        alertBox.style.color = "white";
-    } else {
-        alertBox.innerText = "Mercado Estable";
-        alertBox.style.backgroundColor = "transparent";
-        alertBox.style.color = "#00ff88";
-    }
-<script>
-  // Pegar en la nueva línea 110
-setInterval(() => {
-    const priceDiv = document.getElementById('live-price');
-    const alertBox = document.getElementById('volatility-alert');
-    if(!priceDiv) return;
-
-    let oldPrice = parseFloat(priceDiv.innerText);
-    let movement = (Math.random() - 0.5) * 4; // Simula movimiento de trading
-    let newPrice = oldPrice + movement;
-
-    priceDiv.innerText = newPrice.toFixed(2);
-    priceDiv.style.color = newPrice >= oldPrice ? "#00ff88" : "#ff4c4c";
-
-    if (Math.abs(movement) > 1.5) {
-        alertBox.innerText = "⚠️ ALERTA: MOVIMIENTO BRUSCO";
-        alertBox.style.backgroundColor = "#ff4c4c";
-        alertBox.style.color = "white";
-    } else {
-        alertBox.innerText = "Mercado Estable";
-        alertBox.style.backgroundColor = "transparent";
-        alertBox.style.color = "#00ff88";
-    }
-}, 1000);
     // 1. Efecto de escritura al cargar
     window.onload = typeWriter; 
 
@@ -208,98 +178,3 @@ function calculateRisk() {
             document.getElementById('trade-result').value = '';
         }
     }
-</script>
-<footer class="main-footer">
-    <div class="footer-content">
-        <p>&copy; 2026 <span class="highlight">Alexander Berroa</span></p>
-        <p>Hecho con <i class="fas fa-code"></i> y <i class="fas fa-brain"></i></p>
-        <p class="location-text">Jersey City, NJ</p>
-    </div>
-</footer><script>
-    // 1. Efecto de escritura
-    window.onload = typeWriter; 
-
-    let totalPnL = 0;
-
-    // 2. Calculadora de Riesgo
-    function calculateRisk() {
-        const capital = document.getElementById('capital').value;
-        const riskPercent = document.getElementById('risk-percent').value;
-        const stopTicks = document.getElementById('stop-ticks').value;
-        const resultDiv = document.getElementById('result');
-
-        if (capital && riskPercent && stopTicks) {
-            const riskAmount = capital * (riskPercent / 100);
-            const costPerTrade = stopTicks * 1.25;
-            const contracts = Math.floor(riskAmount / costPerTrade);
-
-            resultDiv.innerHTML = `
-                <p>Riesgo máximo: <strong>$${riskAmount.toFixed(2)}</strong></p>
-                <p>Contratos recomendados: <span class="highlight-val">${contracts} MES</span></p>
-            `;
-        } else {
-            resultDiv.innerHTML = "Por favor, completa todos los campos.";
-        }
-    }
-
-    // 3. Bitácora de Trades
-    function addTrade() {
-        const asset = document.getElementById('trade-asset').value;
-        const result = parseFloat(document.getElementById('trade-result').value);
-        const tableBody = document.getElementById('trade-body');
-
-        if (asset && !isNaN(result)) {
-            const row = tableBody.insertRow();
-            const status = result >= 0 ? '🟢 Win' : '🔴 Loss';
-            const statusClass = result >= 0 ? 'win-text' : 'loss-text';
-
-            row.innerHTML = `
-                <td>${asset}</td>
-                <td class="${statusClass}">$${result.toFixed(2)}</td>
-                <td>${status}</td>
-            `;
-
-            totalPnL += result;
-            const totalDisplay = document.getElementById('total-pnl');
-            totalDisplay.innerText = `$${totalPnL.toFixed(2)}`;
-            totalDisplay.className = totalPnL >= 0 ? 'win-text' : 'loss-text';
-
-            document.getElementById('trade-asset').value = '';
-            document.getElementById('trade-result').value = '';
-        }
-    }
-</script>
-<script src="script.js"></script>
-</body><div class="trading-container">
-    <h2>Nueva Entrada de Trade</h2>
-    
-    <div class="input-group">
-        <label>Precio de Entrada:</label>
-        <input type="number" id="entrada" placeholder="Ej: 60000">
-    </div>
-
-    <div class="input-group">
-        <label>Stop Loss (SL):</label>
-        <input type="number" id="stopLoss" placeholder="Ej: 59500">
-    </div>
-
-    <div class="input-group">
-        <label>Take Profit (TP):</label>
-        <input type="number" id="takeProfit" placeholder="Ej: 62000">
-    </div>
-
-    <div class="input-group">
-        <label>Cantidad (Lote/Contratos):</label>
-        <input type="number" id="cantidad" placeholder="Ej: 0.1">
-    </div>
-
-    <button onclick="calcularTrade()">Calcular Riesgo</button>
-
-    <div class="resultados">
-        <p id="resultadoRiesgo">Riesgo: $0.00</p>
-        <p id="resultadoRR">Ratio R/B: 1:0.00</p>
-    </div>
-</div>
-
-<script src="script.js"></script></body>
-</html>

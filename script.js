@@ -61,7 +61,8 @@ function addTrade() {
         const totalDisplay = document.getElementById('total-pnl');
         totalDisplay.innerText = `$${totalPnL.toFixed(2)}`;
         totalDisplay.className = totalPnL >= 0 ? 'win-text' : 'loss-text';
-
+let highPrice = 5500.00;
+let lowPrice = 5500.00;
         document.getElementById('trade-asset').value = '';
         document.getElementById('trade-result').value = '';
     }
@@ -108,3 +109,13 @@ function checkVolatility(change) {
 
 // 3. ARRANCAR EL MONITOR (Cada 1 segundo)
 setInterval(updateMarket, 1000);
+// --- LÓGICA DE MEMORIA (Añadir dentro del setInterval) ---
+    if (newPrice > highPrice) {
+        highPrice = newPrice;
+        document.getElementById('day-high').innerText = highPrice.toFixed(2);
+    }
+    
+    if (newPrice < lowPrice) {
+        lowPrice = newPrice;
+        document.getElementById('day-low').innerText = lowPrice.toFixed(2);
+    }
